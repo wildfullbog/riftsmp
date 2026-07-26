@@ -6,9 +6,10 @@
 }
 
 body {
-    background-color: #0e0f14; /* Etwas dunkler für besseren Kontrast zum Lila */
+    background-color: #0e0f14;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
+    padding-top: 70px; /* Platz für die feste Kopfzeile */
 }
 
 .container {
@@ -17,40 +18,98 @@ body {
     padding: 20px;
 }
 
+/* Neue feste Kopfzeile Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #16181f;
+    border-bottom: 3px solid #252936;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.nav-container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.nav-logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 6px;
+    border: 1.5px solid #6f42c1;
+}
+
+.brand-text {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.2rem;
+    color: #a066ff;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.brand-text span {
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.navbar .nav-item {
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.navbar .nav-item a {
+    color: #aaaaaa;
+    text-decoration: none;
+    padding: 10px 18px;
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.navbar .nav-item:hover, .navbar .nav-item.active {
+    background-color: #212534;
+}
+
+.navbar .nav-item:hover a, .navbar .nav-item.active a {
+    color: #a066ff;
+}
+
 /* Hero Header */
 .hero {
-    background: linear-gradient(rgba(14, 15, 20, 0.6), #0e0f14), url('https://unsplash.com') no-repeat center center/cover;
+    background: linear-gradient(rgba(14, 15, 20, 0.4), #0e0f14), url('https://unsplash.com') no-repeat center center/cover;
     text-align: center;
-    padding: 60px 20px;
-}
-
-/* Logo Bild Styling */
-.logo-container {
-    margin-bottom: 20px;
-}
-
-.server-logo {
-    max-width: 160px; /* Perfekte Größe für den Header */
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(111, 66, 193, 0.6); /* Lila Leuchteffekt passend zum Logo */
-    border: 3px solid #6f42c1;
-    transition: transform 0.3s;
-}
-
-.server-logo:hover {
-    transform: scale(1.05);
+    padding: 50px 20px;
 }
 
 .subtitle {
     font-size: 1.1rem;
     color: #e0e0e0;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     text-shadow: 1px 1px 2px #000;
 }
 
 .subtitle span {
-    color: #a066ff; /* Passendes Helllila statt Blau */
+    color: #a066ff;
     font-weight: bold;
 }
 
@@ -62,12 +121,12 @@ body {
 
 /* Discord Button */
 .btn {
-    padding: 14px 35px;
+    padding: 12px 30px;
     border: 2px solid #000000;
     border-radius: 4px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-decoration: none;
     display: inline-block;
     font-family: 'Poppins', sans-serif;
@@ -83,58 +142,13 @@ body {
     background-color: #4752C4;
 }
 
-/* Layout Struktur */
-.main-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 30px;
-    margin-top: 20px;
-}
-
-/* Sidebar */
-.sidebar {
-    background-color: #16181f;
-    border: 3px solid #252936;
-    border-radius: 8px;
-    padding: 15px;
-    height: fit-content;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar li {
-    margin-bottom: 8px;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
-
-.sidebar li a {
-    color: #aaaaaa;
-    text-decoration: none;
-    display: block;
-    padding: 12px 15px;
-    font-weight: 600;
-}
-
-.sidebar li:hover, .sidebar li.active {
-    background-color: #212534;
-    border-left: 4px solid #a066ff; /* Lila statt Blau */
-}
-
-.sidebar li.active a {
-    color: #ffffff;
-}
-
 /* Username Input */
 .username-container {
     background-color: #16181f;
     padding: 20px;
     border: 3px solid #252936;
     border-radius: 8px;
-    margin-bottom: 25px;
+    margin: 10px 0 30px 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -162,10 +176,10 @@ body {
     border-color: #a066ff;
 }
 
-/* Produkt-Grid */
+/* Produkt-Grid nun über die volle Breite */
 .shop-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
 }
 
@@ -207,8 +221,6 @@ body {
 /* Hintergrundbilder */
 .bg-crates-cat { background-image: url('https://unsplash.com'); }
 .bg-ranks-cat { background-image: url('https://unsplash.com'); }
-
-/* Neuer passender Hintergrund für Premium (Abgestimmt auf dein Logo) */
 .bg-premium-rank { background-image: url('https://unsplash.com'); }
 .bg-vote-crate { background-image: url('https://unsplash.com'); }
 .bg-mythic-crate { background-image: url('https://unsplash.com'); }
@@ -236,7 +248,7 @@ body {
     text-shadow: 1px 1px 0px #000;
 }
 
-/* Buttons im GUI Style */
+/* Buttons */
 .buy-btn {
     background-color: #3b3e4a;
     color: #ffffff;
@@ -253,13 +265,21 @@ body {
 }
 
 .buy-btn:hover {
-    background-color: #a066ff; /* Leuchtet lila beim Drüberfahren */
+    background-color: #a066ff;
     color: #ffffff;
 }
 
-/* Mobil-Optimierung */
-@media (max-width: 768px) {
-    .main-layout {
-        grid-template-columns: 1fr;
+/* Mobil-Optimierung für die Kopfzeile */
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    }
+    .navbar {
+        height: 95px;
+    }
+    body {
+        padding-top: 95px;
     }
 }
