@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiftSMP - Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Bereich -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="logo">RIFT<span>SMP</span></h1>
+            <p class="subtitle">Welcome to RiftSMP. Type <span>/rip</span> to start your adventure.</p>
+            <div class="hero-buttons">
+                <a href="https://discord.gg" target="_blank" class="btn btn-discord">Join Our Discord</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hauptcontainer -->
+    <div class="container">
+        
+        <!-- Layout Aufteilung -->
+        <div class="main-layout">
+            
+            <!-- Seitennavigation -->
+            <nav class="sidebar">
+                <ul>
+                    <li class="nav-item active" onclick="switchCategory('home')"><a href="javascript:void(0)">🏠 Home</a></li>
+                    <li class="nav-item" onclick="switchCategory('crates')"><a href="javascript:void(0)">📦 Crate Key Bundles</a></li>
+                    <li class="nav-item" onclick="switchCategory('ranks')"><a href="javascript:void(0)">💎 Ranks</a></li>
+                </ul>
+            </nav>
+
+            <!-- Dynamischer Shop-Inhalt -->
+            <main class="shop-grid" id="shop-content">
+                <!-- JavaScript fügt hier die Produkte ein -->
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript für den Kategorie-Wechsel -->
+    <script>
+        // Produktdatenbank ohne Credits
+        const products = {
+            home: [
+                { title: "CRATE KEY BUNDLES", desc: "Click to view >", icon: "📦", color: "card-blue", type: "category", target: "crates" },
+                { title: "RANKS", desc: "Click to view >", icon: "👑", color: "card-purple", type: "category", target: "ranks" }
+            ],
+            ranks: [
+                { title: "Premium Rang", price: "9.99€", desc: "Exklusiver Premium-Rang! Schalte besondere Rechte, einzigartige Chat-Farben und Lobbiefunktionen frei.", icon: "💎", color: "card-purple", type: "item" }
+            ],
+            crates: [
+                { title: "3x Vote Crate Keys", price: "1.99€", desc: "Öffne die Vote-Kiste am Spawn.", icon: "🔑", color: "card-teal", type: "item" },
+                { title: "5x Mythic Crate Keys", price: "9.99€", desc: "Chance auf legendäre Rüstungen und Waffen.", icon: "📦", color: "card-purple", type: "item" }
+            ]
+        };
+
+        function switchCategory(categoryName) {
+            const contentGrid = document.getElementById('shop-content');
+            contentGrid.innerHTML = ""; 
+
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else {
+                const targetNav = document.querySelector(`[onclick="switchCategory('${categoryName}')"]`);
+                if(targetNav) targetNav.classList.add('active');
+            }
+
+            const items = products[categoryName];
+            
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `product-card ${item.color}`;
+                
+                if (item.type === "category") {
+                    card.onclick = () => {
+                        switchCategory(item.target);
+                    };
+                    card.innerHTML = `
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                        <div class="product-icon">${item.icon}</div>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        <h3>${item.title}</h3>
+                        <div class="product-price">${item.price}</div>
+                        <p>${item.desc}</p>
+                        <button class="buy-btn" onclick="alert('Kauf von ${item.title} gestartet!')">In den Warenkorb</button>
+                        <div class="product-icon">${item.icon}</div>
+                    `;
+                }
+                
+                contentGrid.appendChild(card);
+            });
+        }
+
+        window.onload = () => {
+            switchCategory('home');
+        };
+    </script>
+</body>
+</html>
