@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <!-- Header Bereich -->
+    <!-- Header Bereich mit verdunkeltem Overlay -->
     <header class="hero">
         <div class="hero-content">
             <h1 class="logo">RIFT<span>SMP</span></h1>
@@ -23,7 +23,7 @@
     <!-- Hauptcontainer -->
     <div class="container">
         
-        <!-- Neues Eingabefeld für den Minecraft Namen -->
+        <!-- Minecraft Name Eingabefeld -->
         <div class="username-container">
             <label for="mc-username">Minecraft-Name für die Käufe:</label>
             <input type="text" id="mc-username" placeholder="Z.B. Notch" autocomplete="off">
@@ -48,23 +48,22 @@
         </div>
     </div>
 
-    <!-- JavaScript für den Kategorie-Wechsel und die Namensprüfung -->
+    <!-- JavaScript für den Kategorie-Wechsel -->
     <script>
         const products = {
             home: [
-                { title: "CRATE KEY BUNDLES", desc: "Click to view >", icon: "📦", color: "card-blue", type: "category", target: "crates" },
-                { title: "RANKS", desc: "Click to view >", icon: "👑", color: "card-purple", type: "category", target: "ranks" }
+                { title: "CRATE KEY BUNDLES", desc: "Click to view >", icon: "📦", color: "card-blue bg-crates-cat", type: "category", target: "crates" },
+                { title: "RANKS", desc: "Click to view >", icon: "👑", color: "card-purple bg-ranks-cat", type: "category", target: "ranks" }
             ],
             ranks: [
-                { title: "Premium Rang", price: "9.99€", desc: "Exklusiver Premium-Rang! Schalte besondere Rechte, einzigartige Chat-Farben und Lobbiefunktionen frei.", icon: "💎", color: "card-purple", type: "item" }
+                { title: "Premium Rang", price: "9.99€", desc: "Exklusiver Premium-Rang! Schalte besondere Rechte, einzigartige Chat-Farben und Lobbiefunktionen frei.", icon: "💎", color: "card-purple bg-premium-rank", type: "item" }
             ],
             crates: [
-                { title: "3x Vote Crate Keys", price: "1.99€", desc: "Öffne die Vote-Kiste am Spawn.", icon: "🔑", color: "card-teal", type: "item" },
-                { title: "5x Mythic Crate Keys", price: "9.99€", desc: "Chance auf legendäre Rüstungen und Waffen.", icon: "📦", color: "card-purple", type: "item" }
+                { title: "3x Vote Crate Keys", price: "1.99€", desc: "Öffne die Vote-Kiste am Spawn für nützliche Standard-Items.", icon: "🔑", color: "card-teal bg-vote-crate", type: "item" },
+                { title: "5x Mythic Crate Keys", price: "9.99€", desc: "Chance auf legendäre Rüstungen, Werkzeuge und seltene Waffen.", icon: "📦", color: "card-blue bg-mythic-crate", type: "item" }
             ]
         };
 
-        // Funktion für den Kauf-Button mit Namensprüfung
         function processPurchase(itemName) {
             const usernameInput = document.getElementById('mc-username').value.trim();
             
@@ -100,17 +99,21 @@
                         switchCategory(item.target);
                     };
                     card.innerHTML = `
-                        <h3>${item.title}</h3>
-                        <p>${item.desc}</p>
-                        <div class="product-icon">${item.icon}</div>
+                        <div class="card-overlay"></div>
+                        <div class="card-inner">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                        </div>
                     `;
                 } else {
                     card.innerHTML = `
-                        <h3>${item.title}</h3>
-                        <div class="product-price">${item.price}</div>
-                        <p>${item.desc}</p>
-                        <button class="buy-btn" onclick="processPurchase('${item.title}')">In den Warenkorb</button>
-                        <div class="product-icon">${item.icon}</div>
+                        <div class="card-overlay"></div>
+                        <div class="card-inner">
+                            <h3>${item.title}</h3>
+                            <div class="product-price">${item.price}</div>
+                            <p>${item.desc}</p>
+                            <button class="buy-btn" onclick="processPurchase('${item.title}')">In den Warenkorb</button>
+                        </div>
                     `;
                 }
                 
