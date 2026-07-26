@@ -23,6 +23,12 @@
     <!-- Hauptcontainer -->
     <div class="container">
         
+        <!-- Neues Eingabefeld für den Minecraft Namen -->
+        <div class="username-container">
+            <label for="mc-username">Minecraft-Name für die Käufe:</label>
+            <input type="text" id="mc-username" placeholder="Z.B. Notch" autocomplete="off">
+        </div>
+        
         <!-- Layout Aufteilung -->
         <div class="main-layout">
             
@@ -42,9 +48,8 @@
         </div>
     </div>
 
-    <!-- JavaScript für den Kategorie-Wechsel -->
+    <!-- JavaScript für den Kategorie-Wechsel und die Namensprüfung -->
     <script>
-        // Produktdatenbank ohne Credits
         const products = {
             home: [
                 { title: "CRATE KEY BUNDLES", desc: "Click to view >", icon: "📦", color: "card-blue", type: "category", target: "crates" },
@@ -58,6 +63,18 @@
                 { title: "5x Mythic Crate Keys", price: "9.99€", desc: "Chance auf legendäre Rüstungen und Waffen.", icon: "📦", color: "card-purple", type: "item" }
             ]
         };
+
+        // Funktion für den Kauf-Button mit Namensprüfung
+        function processPurchase(itemName) {
+            const usernameInput = document.getElementById('mc-username').value.trim();
+            
+            if (usernameInput === "") {
+                alert("Bitte gib zuerst deinen Minecraft-Namen ein, damit wir wissen, wer das Item erhalten soll!");
+                document.getElementById('mc-username').focus();
+            } else {
+                alert(`Kauf von "${itemName}" für den Spieler "${usernameInput}" gestartet!`);
+            }
+        }
 
         function switchCategory(categoryName) {
             const contentGrid = document.getElementById('shop-content');
@@ -92,7 +109,7 @@
                         <h3>${item.title}</h3>
                         <div class="product-price">${item.price}</div>
                         <p>${item.desc}</p>
-                        <button class="buy-btn" onclick="alert('Kauf von ${item.title} gestartet!')">In den Warenkorb</button>
+                        <button class="buy-btn" onclick="processPurchase('${item.title}')">In den Warenkorb</button>
                         <div class="product-icon">${item.icon}</div>
                     `;
                 }
