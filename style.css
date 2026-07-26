@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #121318;
+    background-color: #0e0f14; /* Etwas dunkler für besseren Kontrast zum Lila */
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
 }
@@ -17,24 +17,29 @@ body {
     padding: 20px;
 }
 
-/* Hero Header mit stylischem Minecraft-Landschafts-Hintergrund */
+/* Hero Header */
 .hero {
-    background: linear-gradient(rgba(18, 19, 24, 0.6), #121318), url('https://unsplash.com') no-repeat center center/cover;
+    background: linear-gradient(rgba(14, 15, 20, 0.6), #0e0f14), url('https://unsplash.com') no-repeat center center/cover;
     text-align: center;
-    padding: 100px 20px;
+    padding: 60px 20px;
 }
 
-.logo {
-    font-family: 'Press Start 2P', sans-serif;
-    font-size: 3.5rem;
-    color: #55ff55; /* Minecraft Hellgrün */
-    text-shadow: 4px 4px 0px #000000;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
+/* Logo Bild Styling */
+.logo-container {
+    margin-bottom: 20px;
 }
 
-.logo span {
-    color: #ffffff;
+.server-logo {
+    max-width: 160px; /* Perfekte Größe für den Header */
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(111, 66, 193, 0.6); /* Lila Leuchteffekt passend zum Logo */
+    border: 3px solid #6f42c1;
+    transition: transform 0.3s;
+}
+
+.server-logo:hover {
+    transform: scale(1.05);
 }
 
 .subtitle {
@@ -45,7 +50,7 @@ body {
 }
 
 .subtitle span {
-    color: #55ffff; /* Minecraft Hellblau */
+    color: #a066ff; /* Passendes Helllila statt Blau */
     font-weight: bold;
 }
 
@@ -55,7 +60,7 @@ body {
     align-items: center;
 }
 
-/* Discord Button im Minecraft GUI Look */
+/* Discord Button */
 .btn {
     padding: 14px 35px;
     border: 2px solid #000000;
@@ -76,7 +81,6 @@ body {
 
 .btn-discord:hover {
     background-color: #4752C4;
-    transform: translateY(1px);
 }
 
 /* Layout Struktur */
@@ -87,10 +91,10 @@ body {
     margin-top: 20px;
 }
 
-/* Minecraft GUI-Style Sidebar */
+/* Sidebar */
 .sidebar {
-    background-color: #1c1e24;
-    border: 3px solid #2d313d;
+    background-color: #16181f;
+    border: 3px solid #252936;
     border-radius: 8px;
     padding: 15px;
     height: fit-content;
@@ -116,19 +120,19 @@ body {
 }
 
 .sidebar li:hover, .sidebar li.active {
-    background-color: #2b2f3a;
-    border-left: 4px solid #55ffff;
+    background-color: #212534;
+    border-left: 4px solid #a066ff; /* Lila statt Blau */
 }
 
 .sidebar li.active a {
     color: #ffffff;
 }
 
-/* Username Input Feld im Minecraft Chat Zeilen-Style */
+/* Username Input */
 .username-container {
-    background-color: #1c1e24;
+    background-color: #16181f;
     padding: 20px;
-    border: 3px solid #2d313d;
+    border: 3px solid #252936;
     border-radius: 8px;
     margin-bottom: 25px;
     display: flex;
@@ -140,12 +144,12 @@ body {
 
 .username-container label {
     font-weight: bold;
-    color: #55ffff;
+    color: #a066ff;
 }
 
 .username-container input {
     background-color: #0b0c0e;
-    border: 2px solid #2d313d;
+    border: 2px solid #252936;
     border-radius: 4px;
     padding: 12px;
     color: #55ff55;
@@ -155,7 +159,7 @@ body {
 }
 
 .username-container input:focus {
-    border-color: #55ff55;
+    border-color: #a066ff;
 }
 
 /* Produkt-Grid */
@@ -165,10 +169,10 @@ body {
     gap: 25px;
 }
 
-/* Erweitertes Karten-Design mit echten Minecraft-Hintergründen */
+/* Produktkarten */
 .product-card {
     border-radius: 8px;
-    border: 3px solid #2d313d;
+    border: 3px solid #252936;
     position: relative;
     overflow: hidden;
     min-height: 240px;
@@ -178,17 +182,16 @@ body {
     background-position: center;
 }
 
-/* Die Verdunkelungsschicht, um Text lesbar zu machen */
 .card-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(18, 19, 24, 0.75);
+    background: rgba(14, 15, 20, 0.8);
     z-index: 1;
     transition: background 0.3s;
 }
 
 .product-card:hover .card-overlay {
-    background: rgba(18, 19, 24, 0.65);
+    background: rgba(14, 15, 20, 0.7);
 }
 
 .card-inner {
@@ -201,10 +204,11 @@ body {
     justify-content: space-between;
 }
 
-/* Hintergrundbilder für Kategorien und Produkte via Online-URLs */
+/* Hintergrundbilder */
 .bg-crates-cat { background-image: url('https://unsplash.com'); }
 .bg-ranks-cat { background-image: url('https://unsplash.com'); }
 
+/* Neuer passender Hintergrund für Premium (Abgestimmt auf dein Logo) */
 .bg-premium-rank { background-image: url('https://unsplash.com'); }
 .bg-vote-crate { background-image: url('https://unsplash.com'); }
 .bg-mythic-crate { background-image: url('https://unsplash.com'); }
@@ -219,7 +223,7 @@ body {
 .product-price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ffaa00; /* Minecraft Gold */
+    color: #ffaa00; 
     margin: 8px 0;
     text-shadow: 2px 2px 0px #000;
 }
@@ -232,9 +236,9 @@ body {
     text-shadow: 1px 1px 0px #000;
 }
 
-/* Kaufbutton im Minecraft GUI Button-Style */
+/* Buttons im GUI Style */
 .buy-btn {
-    background-color: #555555;
+    background-color: #3b3e4a;
     color: #ffffff;
     border: 2px solid #000000;
     border-radius: 4px;
@@ -249,9 +253,8 @@ body {
 }
 
 .buy-btn:hover {
-    background-color: #55ff55;
-    color: #000000;
-    text-shadow: none;
+    background-color: #a066ff; /* Leuchtet lila beim Drüberfahren */
+    color: #ffffff;
 }
 
 /* Mobil-Optimierung */
