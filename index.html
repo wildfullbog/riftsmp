@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RiftSMP - Shop</title>
+    
+    <!-- Das Logo als Symbol im Browser-Tab -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Neue feste Kopfzeile (Navbar) -->
+    <!-- Feste Kopfzeile (Navbar) -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand" onclick="switchCategory('home')">
@@ -43,7 +47,7 @@
             <input type="text" id="mc-username" placeholder="Z.B. Notch" autocomplete="off">
         </div>
         
-        <!-- Shop-Inhalt (Jetzt volle Breite ohne Seitenleiste) -->
+        <!-- Shop-Inhalt (Volle Breite) -->
         <main class="shop-grid" id="shop-content">
             <!-- JavaScript fügt hier die Produkte ein -->
         </main>
@@ -80,7 +84,6 @@
             const contentGrid = document.getElementById('shop-content');
             contentGrid.innerHTML = ""; 
 
-            // Aktiven Navigationspunkt oben in der Kopfzeile markieren
             document.querySelectorAll('.navbar .nav-item').forEach(el => el.classList.remove('active'));
             const activeMenuItem = document.getElementById(`menu-${categoryName}`);
             if (activeMenuItem) {
