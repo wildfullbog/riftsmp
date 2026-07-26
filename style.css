@@ -9,7 +9,7 @@ body {
     background-color: #0e0f14;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    padding-top: 70px; /* Platz für die feste Kopfzeile */
+    padding-top: 70px;
 }
 
 .container {
@@ -18,7 +18,7 @@ body {
     padding: 20px;
 }
 
-/* Neue feste Kopfzeile Styling */
+/* Feste Kopfzeile Styling */
 .navbar {
     position: fixed;
     top: 0;
@@ -176,7 +176,7 @@ body {
     border-color: #a066ff;
 }
 
-/* Produkt-Grid nun über die volle Breite */
+/* Produkt-Grid */
 .shop-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
