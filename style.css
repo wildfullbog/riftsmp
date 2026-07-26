@@ -1,201 +1,32 @@
-/* Grundkonfiguration */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #161920;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Hero & Header */
-.hero {
-    background: linear-gradient(rgba(22, 25, 32, 0.7), #161920), url('https://unsplash.com') no-repeat center center/cover;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.logo {
-    font-family: 'Press Start 2P', sans-serif;
-    font-size: 3rem;
-    color: #4ba3ff;
-    text-shadow: 3px 3px #000;
-    margin-bottom: 10px;
-    display: inline-block;
-}
-
-.logo span {
-    color: #ffffff;
-}
-
-.subtitle {
-    font-size: 1.1rem;
-    color: #b9bbbe;
-    margin-bottom: 30px;
-}
-
-.subtitle span {
-    color: #4ba3ff;
-    font-weight: bold;
-}
-
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn {
-    padding: 12px 30px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.2s;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-.btn-discord { background-color: #5865F2; color: white; }
-
-/* Layout Aufteilung */
-.main-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 30px;
-    margin-top: 20px;
-}
-
-/* Sidebar Navigation */
-.sidebar {
+/* Styling für das Minecraft-Name Eingabefeld */
+.username-container {
     background-color: #1f2330;
-    border-radius: 12px;
     padding: 20px;
-    height: fit-content;
-}
-
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar li {
-    margin-bottom: 10px;
-    border-radius: 8px;
-    transition: background 0.2s;
-    cursor: pointer;
-}
-
-.sidebar li a {
-    color: #b9bbbe;
-    text-decoration: none;
-    display: block;
-    padding: 12px 15px;
-    font-weight: 600;
-}
-
-.sidebar li:hover, .sidebar li.active {
-    background-color: #2b3145;
-}
-
-.sidebar li.active a {
-    color: #fff;
-}
-
-/* Produkt Grid & Karten */
-.shop-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.product-card {
     border-radius: 12px;
-    padding: 25px 20px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    min-height: 220px;
+    margin-bottom: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 10px;
+    max-width: 400px;
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
+.username-container label {
+    font-weight: 600;
+    color: #4ba3ff;
 }
 
-.card-blue { background: linear-gradient(135deg, #2b4c7e, #1a3050); box-shadow: 0 6px 0 #132239; }
-.card-purple { background: linear-gradient(135deg, #6c2b7e, #431a50); box-shadow: 0 6px 0 #2d1136; }
-.card-orange { background: linear-gradient(135deg, #7e552b, #50351a); box-shadow: 0 6px 0 #362311; }
-.card-teal { background: linear-gradient(135deg, #2b7e76, #1a504a); box-shadow: 0 6px 0 #113632; }
-
-.product-card h3 {
-    font-size: 1.3rem;
-    font-weight: bold;
-    z-index: 2;
-}
-
-.product-price {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #f1c40f;
-    margin: 5px 0;
-    z-index: 2;
-}
-
-.product-card p {
-    color: #d1d3d6;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    z-index: 2;
-    line-height: 1.4;
-}
-
-.buy-btn {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 10px 15px;
+.username-container input {
+    background-color: #161920;
+    border: 2px solid #2b3145;
     border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 2;
-    width: 100%;
-    margin-top: auto;
-    box-shadow: 0 4px 0 #27ae60;
-    transition: background 0.2s;
+    padding: 12px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
-.buy-btn:hover {
-    background-color: #27ae60;
-}
-
-.product-icon {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 3.5rem;
-    opacity: 0.15;
-    z-index: 1;
-}
-
-/* Mobil-Optimierung */
-@media (max-width: 768px) {
-    .main-layout {
-        grid-template-columns: 1fr;
-    }
+.username-container input:focus {
+    border-color: #4ba3ff;
 }
