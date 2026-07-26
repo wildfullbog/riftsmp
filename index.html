@@ -9,13 +9,24 @@
 </head>
 <body>
 
-    <!-- Header Bereich mit deinem neuen Logo -->
+    <!-- Neue feste Kopfzeile (Navbar) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="switchCategory('home')">
+                <img src="logo.png" alt="RiftSMP Logo" class="nav-logo">
+                <span class="brand-text">RIFT<span>SMP</span></span>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" id="menu-home" onclick="switchCategory('home')"><a href="javascript:void(0)">Home</a></li>
+                <li class="nav-item" id="menu-crates" onclick="switchCategory('crates')"><a href="javascript:void(0)">Crate Keys</a></li>
+                <li class="nav-item" id="menu-ranks" onclick="switchCategory('ranks')"><a href="javascript:void(0)">Ranks</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Bereich -->
     <header class="hero">
         <div class="hero-content">
-            <!-- Dein Logo als Bild eingebunden -->
-            <div class="logo-container">
-                <img src="logo.png" alt="RiftSMP Logo" class="server-logo">
-            </div>
             <p class="subtitle">Welcome to RiftSMP. Type <span>/rip</span> to start your adventure.</p>
             <div class="hero-buttons">
                 <a href="https://discord.gg" target="_blank" class="btn btn-discord">Join Our Discord</a>
@@ -32,23 +43,10 @@
             <input type="text" id="mc-username" placeholder="Z.B. Notch" autocomplete="off">
         </div>
         
-        <!-- Layout Aufteilung -->
-        <div class="main-layout">
-            
-            <!-- Seitennavigation -->
-            <nav class="sidebar">
-                <ul>
-                    <li class="nav-item active" onclick="switchCategory('home')"><a href="javascript:void(0)">🏠 Home</a></li>
-                    <li class="nav-item" onclick="switchCategory('crates')"><a href="javascript:void(0)">📦 Crate Key Bundles</a></li>
-                    <li class="nav-item" onclick="switchCategory('ranks')"><a href="javascript:void(0)">💎 Ranks</a></li>
-                </ul>
-            </nav>
-
-            <!-- Dynamischer Shop-Inhalt -->
-            <main class="shop-grid" id="shop-content">
-                <!-- JavaScript fügt hier die Produkte ein -->
-            </main>
-        </div>
+        <!-- Shop-Inhalt (Jetzt volle Breite ohne Seitenleiste) -->
+        <main class="shop-grid" id="shop-content">
+            <!-- JavaScript fügt hier die Produkte ein -->
+        </main>
     </div>
 
     <!-- JavaScript für den Kategorie-Wechsel -->
@@ -82,13 +80,11 @@
             const contentGrid = document.getElementById('shop-content');
             contentGrid.innerHTML = ""; 
 
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            } else {
-                const targetNav = document.querySelector(`[onclick="switchCategory('${categoryName}')"]`);
-                if(targetNav) targetNav.classList.add('active');
+            // Aktiven Navigationspunkt oben in der Kopfzeile markieren
+            document.querySelectorAll('.navbar .nav-item').forEach(el => el.classList.remove('active'));
+            const activeMenuItem = document.getElementById(`menu-${categoryName}`);
+            if (activeMenuItem) {
+                activeMenuItem.classList.add('active');
             }
 
             const items = products[categoryName];
